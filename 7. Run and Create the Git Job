@@ -1,0 +1,7 @@
+** Create Maven Job with Github:-
+________________________________________________
+1. New Item->Enter an Item Name(Any Name)->Maven Project->Ok->Enter.
+2. General->Descriptin(First Maven Build)->Source Code Management->Git->Repository Url(give the Github repo Url)->Branch->(*/master)->
+   Build->Root Pom(pom.xml)-> Goals and Options(clean install package)->Apply-> Save.
+    NOTE:- In Branch we have to given branch name which we want to build. (E.g:- master, or any branch name).
+3. Build Now->Click on Globe for Consle Output.	

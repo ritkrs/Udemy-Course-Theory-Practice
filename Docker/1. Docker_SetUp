@@ -1,0 +1,113 @@
+** Docker SetUp:- Docker SetUp and accessing through browser.
+____________________________
+
+IMPORTANT NOTE: We will start from STEP:1, after that we will go for STEP:2, then will SKIP STEP:3 and will continue from STEP:4, and then STEP:5.
+                If not working then we can also consider STEP:3.
+           
+
+
+STEP:1
+_________________
+
+** Create new Instance with POC_Docker or can give any name.
+** sudo su -
+** hostname docker-hostname
+** sudo su -
+** yum install docker -y
+** docker --version 
+** docker ps - For see the running container.
+** service docker status
+** service docker start
+** service docker status
+** docker ps - For see the running container.
+** 
+** NOW CREATE DOCKER CONTAINER:- Tutorial:18 (Udemy).
+__________________________________________________________
+STEP:2
+______________
+
+** Docker container created out of docker images
+** docker images created from the docker file.
+
+
+** Initally if we don't have any images then we can pull some of the images from docker hub.
+** https://hub.docker.com/ - Go to docker hub:- https://hub.docker.com/
+** tomcat - Search for tomcat from search bar.
+** Always choose official images only.
+** We can Choose any of the images.
+** If we will not specify the name then it pull only latest images.
+___________________________________________________________________________________________________________________________________________________________
+
+STEP:3
+
+** docker image ls           - Before pulling the latest images just list out the already created images.  (Hit this command in ec2 instance server or mobastream console).
+** docker pull tomcat:latest - Pull the latest image of tomcat.
+** docker image ls           - Will check that latest image is created or not.
+** docker run --name tomcat-container -p 8080:8080 tomcat:latest -   Create container of Docker images.
+**   portNo:8080 - Now,just access the container from browser
+     Note:- While accessing the docker in browser we should alive our session of container from ec2 instance.Means  after creating the container from
+     Ec2 instance don't press enter or don't bring the console in the position to hit a new command.	
+	
+** docker ps 
+** docker ps -a            - To see list of the container.
+** docker rm containername - This is use for remove the docker container. (e.g:- docker rm nsbdg567n)
+** docker run -d --name tomcat-container -p 8080:8080 tomcat:latest:- Create a new container. (-d means detach mode).
+           Note,In detach mode we can bring our cursor to hit any new command and we can also access the access the container from browser.
+** docker kill dockerName   - To stop or kill the docker container.	
+       NOTE:- While accessing the docker container through browser if we are getting "HTTP Status 404 – Not Found" No Problem.We can proceed further
+              for next tutorials.	   
+_________________________________________________________________________________________________________________________________________________________________________
+
+STEP:4
+_____________
+
+Tutorial:19 (Udemy):-
+
+** HTTP Status 404 – Not Found :- 
+
+ docker images
+ docker ps -all :- To see the list of docker images
+ docker stop <CONTAINER_ID> :- We will stop the running container then we will delete.
+ docker rm <CONTAINER_ID> :- Now we will delete the created docker images.
+ docker ps -all :-Will verify that docker image with same container Id or not.If not then we are ready to go further.
+ docker run -d --name tomcat-container -p 8080:8080 tomcat:latest
+ docker ps - access
+ docker rm containername - Remove container if any container is available.
+ docker stop containername  - To stop the any docker container name.If any docker container is running,first stop then remove those container.
+ docker ps -a - I hope no docker container is available.
+ docker run -d --name tomcat-containers -p 8080:8080 tomcat:latest - Create docker container in detach mode.
+ docker ps -a - To see the list of docker container.
+   ** Now access the docker application through browser by putting Ip address followed by port no.
+      Will see once again HTTP Status 404 error.
+	  
+** Handling the :- "HTTP STATUS 404":-
+__________________________________________________________
+
+STEP:5
+___________________
+
+** docker exec -it tomcat-containers /bin/bash  - We are logging to our container with bash. (This shell command).
+** ls
+** cd webapps
+** ls - After hitting this command if we are not able to see any folder. that's why we are getting error HTTP STATUS 404  while accessing through browser.
+   Now, let's resolve this issue.
+** cd ..
+** cd webapps.dist/
+** ls	
+** cp -R * ../webapps
+** ../webapps
+** ls  
+
+** Now hit the IpAddress:PortNo - I hope We are able to see the Tomcat landing page.
+  
+   NOTE:- Don't forget to update the server port no in securuty group.
+
+
+NOTE:- There is also another approach to fix this issue. That approach we can get from video:19 after 03:35(3 min 35 secs).But that is not required.
+        Anyways If we are getting the issue "HTTP STATUS 404" we can skip this issues and we can continue further from video no - 20.
+
+	  
+	  
+ 
+ 
+	

@@ -1,0 +1,43 @@
+** R&D Issues:-
+________________
+
+1. Prob:- Facing issue while set the Java path   was not able to save that.
+   Soln:- Command:- nano .bash_profile
+          After Editing follow the below command:-
+		  Command:- CTRL+X
+		             Y
+					 
+2. Prob:- After all set i was not able to access Jenkins on browser. Was unable to change the default port because unable to access the 
+          Configuration file of jenkins. That's why i was not able to access the Jenkins through browser.
+		  
+		  NOTE:- It took time a lot almost 36 hours. I was searching for keyboard:- how to change the port.
+		         But the got soln by keyboard:- Not able to access jenkins through ec2 instance
+		  
+		  
+   Soln:- https://hayato-iriumi.net/2019/08/22/how-to-install-jenkins-on-aws/ 
+          go through the above link and followed.
+
+    1. Create the Instance by following the above links.	
+	2. Install Java 8 :- yum install java-1.8*
+	3. Install Jenkins By using 3 commands.
+	4. Then start jenkins:- sudo systemctl start jenkins
+	5. Jenkins daemon starts by itself after reboot:- sudo systemctl enable jenkins
+	6. Check that Jenkins are running on which port:- ps aux | grep jenkins    (This is important command).
+	7. Open Configuration file and change the default port:-  sudo vi /etc/sysconfig/jenkins
+	8. After editing save the file :- esc, then :wq! then ENTER
+	8. Check  now Jenkins is running on new port properly or not:-  curl localhost:8181
+	9. Restart the Jenkins:- sudo systemctl restart jenkins
+	10. Restart the Jenkins server once again after change:- sudo systemctl start jenkins
+	
+	Now Changes Of Security Group:-
+	______________________________________
+	1. Go to Instance DashBoard->Select the Instance->Security->Security Group->Edit Inbound Rules.
+	2. Click on Add Rule.
+	3. Custom Tcp->   TCP->     8181->(Give any custom port here except default)     custom-> 0.0.0.0/0
+	4. save Rules.
+	6. Copy the public Ip address and new port no paste into the browser.
+	   e.g:- 52.15.238.68:8181  -> Enter
+	7. I hope now able to access this Jenkins in browser through EC2 Instance - Success.   
+	                            
+
+	

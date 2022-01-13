@@ -1,0 +1,72 @@
+** Set up the git and Maven:-
+____________________________________________
+1. sudo su -
+2. Change the host name of Jenkins server  -> hostname jenkins    (jenkins is the name.We can give any name)
+3. Install git packages on jenkins server - yum install git -y
+
+GITHUB INSTALLATION PROCESS:-Now We have to install a plugins of Github
+_____________________________________________________________________
+1. Go to Jenkins DashBoard.
+2. Go to  Manage Jenkins--> Manage plugins-->Available Bar-->then serarch for  GITHUB PLUGIN from search box--> checked Github-->Install without restart
+   NOTE:- After searching if we are not able to find properly. Then look below line of available plugins which says:- This plugins integrates GITHUB to jenkins. 
+3. After this go once:- Jenkins Dashboard->Manage Jenkins->Global Tool Configuration->Git Installations->name(github - fill this)->path to GIT executable(git - fill this)-> apply-> save.
+
+MAVEN INSTALLATION PROCESS:-
+_____________________________________________________________________
+1. 
+
+pwd
+cd /opt
+ls -ltr
+For downloading:- wget https://dlcdn.apache.org/maven/maven-3/3.8.3/binaries/apache-maven-3.8.3-bin.tar.gz  (This is maven link)
+ls
+tar -xvzf folderName - Extract the Zip folder (Folder name i hope you already get by using above ls command, copy till to .gz and give) 
+ls
+mv folderNAME maven  - The folder name which we will get after execute the above command itself (ls)
+cd maven
+pwd
+ls
+nano ~/.bash_profile
+
+M2_HOME=/opt/maven
+M2=/opt/maven/bin
+PATH=$PATH:$HOME/bin:$JAVA_HOME:$M2:$M2_HOME - Update the PATH carefully.
+exit 
+sudo su -
+mvn --version - check the version here.
+
+echo $M2 - Check the maven path set or not.
+echo $M2_HOME - Check the path set or not.
+
+** Maven set on Jenkins Dashboard:-
+____________________________________________
+1. Go to ec2 dashboard->Manage Jenkins->Manage plugins->Available-> search for MAVEN and select MAVEN INTEGRATION and MAVEN INVOKER->Install with restart.
+
+
+** Now We have to set the Maven Path:-
+
+2. Manage Jenkins-> Global Tool Configuration->Maven->Add Maven->Name(M2_HOME - Fill this One inside NAME box)->MAVEN_HOME(/opt/maven - Fill this one 
+   inside MAVEN_HOME box)->Apply->Save--->Maven set up got completed.
+   
+3. Go to Manage Jenkins->Manage plugins and Install two plugins:- 1. MAVEN INVOKER  2. MAVEN INTEGRATION.   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

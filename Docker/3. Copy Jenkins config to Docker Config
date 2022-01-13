@@ -1,0 +1,58 @@
+** Copy Artifacts On Docker:-
+_________________________________________________
+
+NOTE:- THIS WILL WORK ONLY IF YOU HAVE ALREADY COMPLETED JENKINS AND TOMCAT SERVER CONFIGURATION SEPERATELY.
+       THE MAIN PURPOSE OF THIS, IT WILL COPY ALL THE CONFIGURATION FROM PREVIOUS CONFIGURATION.
+	   SO IF THERE IS NO PREVIOUS CONFIGURATION< OBVISOULY IT WILL NOT WORK.
+	   
+STEP:1:-
+_________________________________________________
+** Go To Jenkins DashBoard->New Item->Name(Deploy_On_Docker)->Instead Of Maven select previous Job Configuration from below->Description(Deploy_On_Docker)->
+   next->unselect the POLL SCM->Cross the Post Build Actions X (Remove this)->Add Post Build Actions(send build artifacts over SSH)->Here new Pop up will open->
+   ssh server name[(Poc_docker)This will get automatically as drop down options from previous configuration]->source files[(webapp/target/*.war)- We can get this path by follow below command]->
+   Remote Directory(.) dot or full stop]->Apply->Save.
+   
+   NOTE:- We can go to jenkins dashboard , and build we can here also.But it will be better if we will go for below command. 
+   
+   Go to jenkins Ec2 Server and go inside workspace directory and hit below commands:-
+   
+   find / -type d -name "workspace" - If you are not into workspace.then you can go inside workspace by using this command.
+   cd /var/lib/jenkins/workspace
+
+   pwd 
+   ls
+   cd Deploy_On_Tomcat_3/   - 
+   ls
+   cd webapp/target/
+   ls
+   pwd
+   
+  After hitting the pwd command will get the one Path.(E.g:- /var/lib/jenkins/workspace/Deploy_On_Tomcat_3/webapp/target)   
+  Our path is, After the job name.
+  
+Step:-2:-
+_________________________________________________
+** Go to Docker Ec2 server-> 
+   go to hostname(dockeradmin)->
+   ls
+   pwd
+   go to hostname of docker - I given the name as dockeradmin.
+   su - dockeradmin  -> go inside home directory or inside root of Hostname. (Here dockeradmin is hostname).
+   pwd
+   whoami - After hitting this command We should go inside host directory.
+ 
+Step:3:- 
+_________________________________________________
+   
+**  Come to Jenkins Dashboard->Build Now->   
+
+     NOTE:- After Successfully build, It should be show just like below message.
+    
+	SSH: Connecting from host [jenkins]
+    SSH: Connecting with configuration [POC_Docker] ...
+    SSH: Disconnecting configuration [POC_Docker] ...
+    SSH: Transferred 1 file(s)
+    Finished: SUCCESS
+	
+	Pending:- This part is pending because 3 videos are not complted till now and I am also facing issue while creating connectoin.
+	2. If we are starting then we can start from Very begining and from Jenkins,Tomcat then Docker.

@@ -1,0 +1,32 @@
+2. INSTANCE TESTING - YOUTUBE:-
+_________________________________________________________________________
+** NOTE :- This tutorial is the not the part of Udemy. This ref is taken from Youtube for learning purpose.
+        Youtube Ref:- https://www.youtube.com/watch?v=xXzsZx2i_SM        (One Month old Video only)
+		Youtube Channel:- Tech Mahato (1.81K subscribers)
+		Learning date:- 10/10/2021
+
+
+
+
+1. 
+
+i.    After creating the Instance properly. Copy the IPv4 address and paste into the Google browser.
+ii.   If We will get  "This site can’t be reached" then come back to instance dashboard.
+iii.  Top of the Dashboard There is a button with the name of CONNECT. Click on that.
+iv.   Connect to Instance page - Click CONNECT once again.
+_____________________________________________________________________________________________________________________________________________________________________________________
+2.    
+
+i. Once Console is opened after clicking on CONNECT then proceed with the below commands:-
+
+   For check the status of server that it's running or not :- sudo systemctl status httpd
+
+     sudo yum install httpd 
+     sudo systemctl start httpd
+     sudo systemctl enable httpd
+     sudo su
+     echo "Hello world" > /var/www/html/index.html
+     systemctl restart httpd
+
+
+

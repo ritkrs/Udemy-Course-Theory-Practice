@@ -1,0 +1,48 @@
+** Integrate Docker with Jenkins DashBoard:-
+__________________________________________________________
+** For Integration purpose we need to install the plugins of PUBLISH OVER SSH inside jenkins DashBoard.
+** Go to Manage Jenkins->Manage plugins->Avalable->search(search for - PUBLISH OVER SSH)->check the publish over ssh->Install without restart->Done.(Now come to Dashboard).
+** We need to add Docker server credentials over here(Inside Jenkins dashboard).For that purpose i am going to create a User called DockerAdmin in Docker server.
+** Now Come to docker server or connect with Docker server by using MobaXtream.
+
+** Hit the below commands inside the Docker server Instance:- Come to Docker Instance Server:-
+______________________________________________________________________________________________________________
+1.   useradd dockeradmin
+2.   passwd dockeradmin
+3.   cat /etc/group    - To see the User list of Docker group.User should be must the part of Docker group.  (e.g:- docker:x:497)
+3.   usermod -aG docker dockeradmin - Add user to this group.If not added.First check then add.   (dockeradmin - This is the name of User).
+4.   id dockeradmin - This is for confarmation that  user is added into the group.
+
+** Now, This Docker credentials we should provide into Jenkins Server:-
+____________________________________________________________________________________________
+*1. Go To Jenkins DashBoard->Manage Jenkins->Configure System->publish Over SSH(If we are not able to find search direct by:-publish Over SSH)->SSH servers->
+    Add-> and the following details:-
+	
+	 Name - POC_DOCKER  (We can give the Instance name of Docker from Ec2 DashBoard).
+	 Hostname - Give the Ip Address. For getting the IP address run this command on Docker server:- ip address
+                After hit the above command we will get lot's of options. So always consider Ip address from Option 2.	 
+	 Username - dockeradmin   (This is the username which i set).
+	 
+**   Now, click on advanced->Check the checkbox of USE PASSWORD AUTHENTICATION,OR USE A DIFFERENT KEY->Passphrase/Password(put the password here:-dockeradmin)->
+     After that come down and click on Test the Connection-> Now here TEST CONFIGURATION will be failed.
+	 NOTE:- By default password based authentication is not enabled.
+	 
+	 
+**   Resolve TEST CONFIGURATION:- Now will enabled password based authentication:-
+______________________________________________________________________________________________________________
+**   Go to Docker server Instance-> and hit the below command.
+*1   vi /etc/ssh/sshd_config - after hitting this command One configuration file will be open.
+*2   search for "password"
+*3	 In that file, Convert "PasswordAuthentication no" To "PasswordAuthentication yes"
+*4   service sshd reload - Restart the service once again.
+*5   Then go to Jenkins and click on Test Configuration Once again.
+*6   Apply->Save->Done
+
+     Now, The Integration of Jenkins server and Docker server is done.
+
+
+
+
+	 
+	 
+	 

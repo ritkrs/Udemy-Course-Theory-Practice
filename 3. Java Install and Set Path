@@ -1,0 +1,34 @@
+3. JAVA INSTALLATION AND SET PATH:-
+_______________________________________________________
+*1 Steps:- Install java 8
+ * Command -> yum install java-1.8*
+ 
+*2 Find the java or JRE path.
+ * Command -> find /usr/lib/jvm/java-1.8* | head -n 3
+ 
+*3 Set the java path.
+    i.   For go to root user
+         Command -> cd - 
+   
+    ii.   Open the bash profile and set the path inside bash profile.
+	      Command -->   nano ~/.bash_profile
+		        OR      nano .bash_profile
+   
+    iii.  Edit the bash profile:-
+	      Just before the PATH set the JRE Path.
+		 
+		 (a) Mention this before the PATH-->  JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.302.b08-0.amzn2.0.1.x86_64
+		     NOTE:- We can find the Java or JRE Path by using this command --> find /usr/lib/jvm/java-1.8* | head -n 3
+		 
+		  
+		 (b) Now edit and update the PATH
+		     Before edit:- PATH=$PATH:$HOME/bin
+		     After  edit:- PATH=$PATH:$HOME/bin:$JAVA_HOME
+			 
+			 After this two changes press this command for save and came out from .bash_profile or  ~/.bash_profile :- (1) CTRL+X  
+			                                                                                       (ii) y
+			                                                                                       
+*4 Cross check that path is setted or Not:-
+   command-> exit 
+             sudo su -
+             echo $JAVA_HOME			

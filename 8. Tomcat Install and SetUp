@@ -1,0 +1,163 @@
+** SET UP TOMCAT ON EC2 SERVER:-
+__________________________________________________
+
+STEP:1
+_____________
+
+** Create a new Instance with the name of TOMCAT_SERVER and follow the below commands.
+  
+  NOTE:-Before following below steps, Install the Java 8.
+  
+1.  sudo su -
+2.  hostname tomcat - For better naming convention we can change the Host name.   (Optional).
+2.  cd /opt
+3.  wget https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.72/bin/apache-tomcat-8.5.72.tar.gz - Download Tomcat:-
+4.  ls
+5.  tar -xvzf apache-tomcat-8.5.72.tar.gz - After downloading zip file We need to extract it.
+6.  ls
+7.  mv apache-tomcat-8.5.72  tomcat - For better naming convention changing folder name from apache-tomcat-8.5.72 to tomcat
+8.  ls
+9.  cd tomcat/ - Go inside the tomcat.
+10. ls
+12. cd bin 
+13. ls
+14. ./startup.sh - 
+15. IpAddresss:8080 - Hit this in browser.
+
+    NOTE:- If still not able to access tomcat then create ADD RULES and Update Port No 8080 inside Security group.
+______________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+STEP:2 -(Optional)
+
+(Follow this one if not getting error while accessing the browser).
+______________	
+** Security Group update with Port No 8080:-
+____________________________________________________
+** Go To DashBoard->Security-> Security Groups-> Edit Inbound Rules->Now Create.
+
+   Custom TCP--> Port Range(8080)only-->Anywhere-->0.0.0.0/0  -->Save Rules
+   
+   NOTE:- We have take only 8080,because Tomcat by default running on Port 8080
+   
+   only. If not working with 8080, then For Hit and run we can try for another Port also. 
+
+** After that we have to come on Ec2 server and run all this commands once again:-
+
+i.    exit
+ii.   sudo su -
+iii.  cd /opt
+iv.   ls 
+v.    cd tomcat/
+vi.   ls 
+vii.  cd bin
+viii. ls
+iX.   ./startup.sh -
+x.    IpAddresss:8080 - Hit this in browser.
+__________________________________________________________________________________________________________________________________________________________________________________________________
+STEP:3
+__________	
+
+** If tomcat is Install then only we can go with below procedure only.
+** When We are click on Manager App of land page of Tomcatserver then we will get 403 ACCESS DENIED ERROR.
+
+** FIXING 403 ACCESS DENIED	ERROR:-
+________________________________________________________________________________________________________________________
+1.   find / -name context.xml
+     NOTE:- After hitting above command we will get 3 or 4 options:-
+	 
+	 /opt/tomcat/conf/context.xml
+    /opt/tomcat/webapps/examples/META-INF/context.xml
+   /opt/tomcat/webapps/host-manager/META-INF/context.xml  - Consider this One.
+  /opt/tomcat/webapps/manager/META-INF/context.xml    - Consider this One
+  
+2.   vi /opt/tomcat/webapps/manager/META-INF/context.xml - Edit this manager file. (manager)
+
+     <!--  <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+         allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" /> -->
+		 
+		 NOTE:- We need to edit only Manager and host-manager only. That's It.
+		 
+3. 	Commented above line and for comment we will use <!--  --> this and save with :wq and Enter.
+	
+4.  We need to do same thing for host-manager file also.(host-manager) 
+5.  vi /opt/tomcat/webapps/host-manager/META-INF/context.xml  - Edit this file
+    
+	<!--  <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+         allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" /> -->
+		 
+6.  ./shutdown.sh - After any changes in configuration file, We need to shutdown and StartUp once again.
+7.  ./startup.sh  - Startup Once again.
+
+8.  Refresh the browser and and hit the URL with Ip address and Port No.
+9.  This time it's working and asking for UserName and Password.
+______________________________________________________________________________________________________________________________________________________________________________________________________
+
+STEP:4
+
+** Let's set up Username and Password:
+
+11.  pwd
+12.  cd .. 
+13.  pwd
+14.  ls
+15.  cd conf/
+16.  ls
+17.  vi tomcat-users.xml - We will edit tomcat-users.xml file which is located into conf folder.
+
+18.   <role rolename="manager-gui"/>
+      <role rolename="manager-script"/>
+      <role rolename="manager-jmx"/>
+      <role rolename="manager-status"/>
+      <user username="admin" password="admin" roles="manager-gui, manager-script, manager-jmx, manager-status"/>
+      <user username="deployer" password="deployer" roles="manager-script"/>
+      <user username="tomcat" password="s3cret" roles="manager-gui"/>
+	  <user username="ritesh" password="ritesh" roles="manager-gui"/>
+	  
+19. Add all the above lines in tomcat-users.xml file in last of the file and just before the </tomcat-users> tag.
+20. Be careful, There should be no space before every tag otherwise will encounter a problem.
+20. Save the file with :wq
+21. After save, We need to refresh server by using below commands.
+22. cd ../bin/
+23. ls -l
+24. ./shutdown.sh
+25. ./startup.sh
+26. Refresh the Browser and hit once again Ip address with 8080 Port No.
+27. UserName = tomcat , Password= s3cret
+	  
+_______________________________________________________________________________________________________________________________________________________________________________________
+STEP:5
+
+Integrate Tomcat with Jenkins:-
+__________________________________________________
+1.   Manage Jenkins->Manage plugins->Available-> Search for:- deploy to container-> Install Without Restart.	 
+
+     After this one or two video is missing:- That is for deploy our tomcat to Jenkins CI/Cd pipeline.
+	 
+	 ** Deploy a var file on Tomcat using jenkins:-
+	 
+i.   Go to Jenkins dashboard and Install the plugins of "DEPLOY TO CONTAINER".
+ii.  Create a new Item->Enter an Item name->maven project->Ok. 
+     Desccription->git->Url->Goals and Options(clean install package)->Add post builds actions( Deploy war/ear to a container)->after select this one pop up will open->
+	 WAR/EAR files->(fill this - **/*.war)->click on Add to container drop down->choose tomcat-8->credentials->Add->(username - ritesh,
+	 password - ritesh,iD - deployer_user,description - user to deploy on tomcat vm)->then click on Add->select configuration in credentials box itself->
+	 Tomcat Url(take the landing page of tomcat url or take the Ip address of tomcat Instance with port no)->Apply->save.
+	 
+iii. 	 
+	  
+	  cd /opt/tomcat/
+	  ls
+	  cd webapps/
+	  ls -l
+	  
+NOTE - After deploying our war file on server that will copy inside this webapps location. SO, it will be better if we will check webapp folder  
+       before deploying our project into server.
+
+** Go to DashBoard and click on->build now.
+** After successfully build -> come to mobastream instance stream and put the below commands.
+**  ls -l	   
+** after putting the above command we are able to see that one more war file is generated inside tomcat with webapp.war extension.
+** Will copy only webapp but not war and come to the browser and paste it after port no.
+   E.g:- 132.54343.22:8080/webapp
+   
+   I hope we are able to see the O/p.
+
+     	 

@@ -1,0 +1,98 @@
+4. JENKINS INSTALLATION AND SETUP DASHBOARD:-
+____________________________________________________________
+01 Run this 3 commands one by one:-
+
+   sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+   
+   sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+   
+   yum install jenkins
+   
+    NOTE:- For refer above commands from Jenkins Official refer this One:- https://pkg.jenkins.io/redhat-stable/
+	
+** If We will Face Issue while running the above command:-
+   Use below 3 commands:-
+   
+   sudo amazon-linux-extras install epel -y 
+   sudo yum update -y 
+   sudo yum install jenkins java-1.8.0-openjdk-devel 
+   
+   
+02 Now see the status of Jenkins:-
+________________________________________________________________________
+** service jenkins status 
+
+
+03 If Jenkins is stopped, restart by below command and check the status once again:-
+__________________________________________________________________________________________
+**   service jenkins start
+     service jenkins status
+	 
+	 NOTE:- Now, Jenkins status should be running
+	 
+	 
+** Now check Jenkins running on Which port:-
+________________________________________________________________________
+i.   Command:- ps aux | grep jenkins	 
+ii.  If jenkins is running on duplicate port then change the port of Jenkins.
+
+04 Now Access Jenkins on browser:-
+____________________________________________________________________________________________
+** Copy the public IP address from EC2 Dashboard and paste into the browser with port No.
+   E.g:- 54.210.25.114:7070   (7070=It's my port no)
+   
+   Success:- I hope you are able to access the Jenkins Dashboard on Server.
+   
+             If getting error:- "SITE CAN'T BE REACHED"
+	Then Change the default port and access Jenkins by using Custom port.
+	
+*5 Change the Default Jenkins PORT:-
+____________________________________________________________
+** 	i.   Check that Jenkins are running on which port:- ps aux | grep jenkins    (This is important command).
+	ii.  Open Configuration file and change the default port:-  sudo vi /etc/sysconfig/jenkins
+	iii. After editing save the file :- esc, then :wq! then ENTER
+	iv.  Restart the Jenkins:- sudo systemctl restart jenkins
+	v.   Check  now Jenkins is running on new port properly or not:-  curl localhost:8181
+	vi.  Restart the Jenkins server once again after change:- sudo systemctl start jenkins
+    vii. For changing the Default PORT refer this link :- https://www.youtube.com/watch?v=XVei-AeXLLo&t=48s
+	
+	
+	
+06 	Access the Dashboard of Jenkins:-
+_______________________________________________________________________________________________________________________________________________
+** After putting the IP address and port No on browser, they will ask for the Administrator password On Unlock Jenkins page.
+** We can manually find the Administrator password from location or we can find by Amazon Server Console by using following commands:-
+   
+   sudo su -
+   cd /var/lib/jenkins/secrets/
+   cat initialAdminPassword
+   
+   NOTE :- I hope We are able to see the Adminstrator password.
+   
+07 For time being skip the choosing the plugins.
+
+________________________________________________________________________________________________________________________________________________________________________________________________________
+
+08 Now We have to change Some things on Jenkins Dashboard:-
+________________________________________________________________________
+01 Change the Password On Jenkins DashBoard:-
+   Admin-->Configure-->Put Password-->Confirm Password-->Apply-->Save.
+   
+   
+09 Now Access Dashboard by using new Password:-
+________________________________________________________________________
+  1. Hit the IP Address and the port no once again on browser.
+     E.g:- http://54.210.25.114:7070/
+	 
+  2. Put the credentials once again.
+     UserName:- Admin , Password:-Ritesh@123  
+
+  3. Set Java Home Path inside Jenkins DashBoard.
+     ManageJenkins-> Global Tool Configuration -> Add Jdk ->
+     JDK Name --> JAVA_HOME
+     JAVA_HOME -->	/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.302.b08-0.amzn2.0.1.x86_64    (Use this for get - echo $JAVA_HOME on console).
+ 
+		NOTE:- If we want to deploy Tomcat project then compulsory Git and Maven should be Install.
+		       For that compulsory we should Step 6 or File 6 contents.
+	
+	    

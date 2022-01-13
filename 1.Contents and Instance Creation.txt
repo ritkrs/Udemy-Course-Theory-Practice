@@ -1,0 +1,69 @@
+** Contents:-
+______________________________________________________________________
+1. Instance Creation.
+2. Instance Testing -Youtube.
+3. Java Installation and Set Path.
+4. Jenkins Installation.
+5. Jenkins DashBoard SetUp. _Username and Password
+6. Set Java Path Inside Jenkins DashBoard.
+7. Git Installation and SetUp.
+8. Maven Installation and SetUp on Server and DashBoard
+9. Create Maven Job.
+_________________________________________________________________________________________________________________________________________________________________________________________________
+1. INSTANCE CREATION:-
+___________________________________________________
+1.  Amazon Linux 2 AMI (HVM), SSD Volume Type:-
+    Amazon Linux 2 comes with five years support. It provides Linux kernel 4.14 tuned for optimal performance on Amazon EC2, systemd 219, GCC 7.3,
+	Glibc 2.26, Binutils 2.29.1, and the latest software packages through extras. This AMI is the successor of the Amazon Linux AMI that is now
+	under maintenance only mode and has been removed from this wizard.
+	
+_____________________________________________________________________________________________________________________________________________________________________
+2. Choose Instance Type:-
+   i.    family-t2, 
+   ii.   type-t2 Micro(free for eligible)
+   iii.  vCPUs-1,  
+   iv.   Memory(GiB)-1  
+    v.   Instance Storage(GB)-EBS Only 
+   vi.   EBS-Optimized Available--
+   vii.  Network Performance -Low to Moderate
+   viii. IPv6 Support-Yes
+_____________________________________________________________________________________________________________________________________________________________________________
+3. Step 3: Configure Instance Details:-
+   i.  Protect against accidental termination -Check this checkbox.
+   
+       Optional:-
+________________________________________________________________________________________
+   ii. User Data(as text):- sudo yum install httpd -yum
+                            sudo systemctl start httpd
+                            sudo systemctl enable httpd
+                            sudo echo "Hello world" > /var/www/html/index.html   
+________________________________________________________________________________________________________________________________________________________________________________________
+4. Step 4: Add Storage:- 
+   i. Don't do anything for now. We will discuss more later on.
+________________________________________________________________________________________________________________________________________________________________________________________
+5. Step 5: Add Tags:-
+   i. Key - Name ,       Value - Virtual Machine
+  ii. Key - IT ,         Value - Department
+________________________________________________________________________________________________________________________________________________________________________________________  
+6. Step 6: Configure Security Group:-
+   i.  Security group name: DevOps-Test   (We can give any name).
+   ii. Description: DevOps-Test
+   
+   NOTE:- Now take three Rule. (One is default and will add 2 more ADD RULE).
+   
+   iii. Type-SSh,             Protocol-TCP,   PortRange-22,         Source-Anywhere,  Description-e.g. ,  SH for Admin Desktop
+    iv. Type-All ICMP-IPv4,   Protocol-ICMP,  PortRange-0 - 65535,  Source-Anywhere,  Description-e.g. ,  SH for Admin Desktop
+     v. Type-HTTP,            Protocol-TCP,   PortRange-80,         Source-Anywhere,  Description-e.g. ,  SH for Admin Desktop
+________________________________________________________________________________________________________________________________________________________________________________________
+7. Step 7: Review Instance Launch:-
+   
+    Review and launch here  - That's all 
+	
+	
+	
+II. ALTERNATIVE APPROACH AND WORKING:-
+______________________________________________________________________
+**  https://hayato-iriumi.net/2019/08/22/how-to-install-jenkins-on-aws/
+
+   NOTE:- Follow above one and create the Instance.	
+	
