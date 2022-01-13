@@ -1,0 +1,57 @@
+** Create a Button and his styling:-
+__________________________________________
+** Go inside function component counter.
+** Inside <div> tag add <button>+1</button>
+** Now add the <span>0</span> tag.
+
+** After this one normal Button will be create but i want styling for this button.
+** For styling:- Create one new file with the name of counter.css inside counter folder.
+** import counter.css inside counter.jsx.
+   E.g:- import './counter.css'
+   
+** Counter.css:- button{
+                    background-color:green;
+                    font-size:16px;
+                    padding:15px 30px;
+                    color:white;
+                    width:100px;
+                       }
+
+** Now, Inside counter.jsx we will replace <span>0</span> with <span className="count">0</span>
+** Now here we given className as a count.
+** So, now we will do styling for count inside counter.css.
+** Counter.css:- .count{
+                  font-size:50px;
+				  padding:15px 30px;
+				  }
+				  
+
+** Full Code:-
+____________________
+        counter.jsx:-
+        import React  from "react";
+import './counter.css'
+function Counter(){
+    return(
+        <div className="counter">
+         <button>+1</button>
+         <span className="count">0</span>
+        </div>
+    );
+}
+export default Counter	
+
+** Counter.css:-
+__________________________________________
+button{
+    background-color: green;
+    font-size: 16px;
+    padding: 15px 30px;
+    color: white;
+    width: 100px;
+}
+.count{
+    font-size: 50px;
+    padding: 15px 30px;
+}	
+					   

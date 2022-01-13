@@ -1,0 +1,8 @@
+** Create Project:-
+_________________________
+** Go to:- https://github.com/facebook/create-react-app
+ * npx create-react-app my-app -> Open the command prompt where we want to create the project and hit this command.
+   * After hitting the above command React will be created with the name of MY-APP in location where we want to create the project.
+   
+** npm start:- Go inside created project directory and open command prompt and hit this command.
+   * I hope after hitting above command our project will be UP and it will run in browser   

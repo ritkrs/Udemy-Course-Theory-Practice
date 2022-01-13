@@ -1,0 +1,63 @@
+** Adding State to React component:-
+_________________________________________________
+01 Define a constructor inside the class.
+   CODE:- constructor(){
+        super();
+        this.state={
+            Counter:0
+        }
+        this.increment=this.increment.bind(this);
+    }
+02 Bind the data inside constructor itself.
+   CODE:-this.increment=this.increment.bind(this);
+03 Do some changes inside render method inside button and span tag.
+   CODE:- <button onClick={this.increment}>+1</button>
+          <span className="count">{this.state.Counter}</span>
+04 Access state inside increment method.
+   CODE:-{
+         this.setState({
+             Counter:this.state.Counter+1,
+             secondCounter:this.state.Counter+1
+         }
+		 
+   FULL  CODE:-
+   
+   import React  from "react";
+import { Component } from "react";
+import './counter.css'
+class  Counter extends Component{
+    constructor(){
+        super();
+        this.state={
+            Counter:0,
+            secondCounter:100
+        }
+        this.increment=this.increment.bind(this);
+    }
+    
+    
+    render(){
+        return(
+            <div className="counter">
+             <button onClick={this.increment}>+1</button>
+             <button>+2</button>
+    
+             <span className="count">{this.state.Counter}</span>
+             <span className="count">{this.state.secondCounter}</span>
+            </div>
+        );
+    }
+     increment(){
+         this.setState({
+             Counter:this.state.Counter+1,
+             secondCounter:this.state.Counter+1
+         });
+        
+           
+    }
+    
+}
+
+
+export default Counter
+     

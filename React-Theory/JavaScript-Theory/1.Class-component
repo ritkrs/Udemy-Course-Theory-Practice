@@ -1,0 +1,14 @@
+** Class and Function components:-
+_________________________________________
+** Class components:-
+_______________________________
+ class FirstComps extends Component{
+  render(){
+    return(
+      <div>Second comps</div>
+    );
+  }
+}
+
+NOTE:- Now give the entry of FirstComps inside App component.
+       <FirstComps></FirstComps>

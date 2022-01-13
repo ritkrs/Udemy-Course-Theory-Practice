@@ -1,0 +1,31 @@
+01 Create one New Button similar to old button:-
+__________________________________________________
+
+** We have to give only entry inside the App.js inside the App function component or App Class component.
+   Code:- <Counter></Counter>
+   
+02 Make changes for variable Increment:-
+__________________________________________________
+01 App.js:-Give the entry inside the App component with the values++ increment.
+   CODE:- <Counter by={1}></Counter>
+
+02 Counter.jsx:- Inside render() method change the Onclick button incremented value property.
+   CODE:- Before:- <button onClick={this.increment}>+1</button>
+   After Changes:- <button onClick={this.increment}>+{this.props.by}</button>   
+   
+03 Counter.jsx:- Change the increment() method.
+   CODE:- Before:- increment=()=>{
+         this.setState({
+             Counter:this.state.Counter+1,
+
+         });
+		 
+   After Changes:- increment=()=>{
+         this.setState({
+             Counter:this.state.Counter+this.props.by,
+
+         });
+        		 
+           
+   
+   

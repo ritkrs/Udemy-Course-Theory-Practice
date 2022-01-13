@@ -1,0 +1,27 @@
+01 Create components in Individual Module:-
+________________________________________________
+01 Create components in Individual Module:-
+________________________________________________
+   FOLDER STRUCTURE:-
+** Create one folder with the name of components inside src folder.
+** Create another folder with the name of learning-examples inside components folder.
+** Create one file with the name of SixthComponent.jsx inside learning-examples folder.
+
+   CODE STRUCTURE:-
+01 Inside SixthComponent.jsx file create a class with the name of SixthComponent that extends component Interface.
+02 Now define render method and return the content, whatever we want to populate.
+03 Before class add EXPORT DEFAULT keyboard.
+   E.g:- export default class FifthComponent extends Component
+04 Give the entry of SixthComponent inside App.js module inside div tag.
+   E.g:- function App() {
+          return (
+      <div className="App">
+      My Hello World
+      <SixthComponent></SixthComponent>
+    </div>
+  );
+}
+05 Import  component from react on the top of the class.
+   E.g:- import { Component } from "react";
+06  import Sixth component inside App.js module.
+    E.g:-import SixthComponent from './components/learning-examples/SixthComponent';

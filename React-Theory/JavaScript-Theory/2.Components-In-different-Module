@@ -1,0 +1,23 @@
+** Create components in different module:-
+_________________________________________________________
+01 Create a folder with the name of components inside the SRC folder.
+02 Create another folder inside components folder with any name(e.g:-learning).
+03 Create a file with the name of any file(e.g:-First.jsx) inside the learning folder.
+  
+  Now,We will write the code:-
+  
+01. We will cretae a class that extends the Component Interface.
+    E.g:- export default class First extends Component	
+02. We add EXPORT DEFAULT keyboard just before the class.
+    E.g:-export default class First extends Component.
+03  We will write render method of Component Interface inside class.	
+03. Now we will import Component from React.
+    E.g:- import { Component } from "react";
+	
+** App.js:-
+_________________________________________________________
+01 Import the created .jsx file inside the App.js.
+   E.g:- import First from './components/examples/First';
+02 Give the entry of created class inside the App.js.   
+	
+	

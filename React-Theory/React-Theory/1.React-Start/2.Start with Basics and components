@@ -1,0 +1,14 @@
+** Start with Basic and components:-
+_____________________________________
+01 After creating the project just import those project into visual studio code by using drag and drop.
+02 index.html:- Change title tag content to  React App to ToDo App. After changes it will reflect as ToDo app in browser bar.
+   E.g:- <title>ToDo App</title>
+03 App.js:- Remove all the contents of <div></div> tag. And keep as My Hello World App and save.And then see the browser.Changes will be reflect.
+            E.g:- <div className="App">My Hello World</div> 
+04 index.html:- The contents of landing page cames from only index.html (06)
+05 App.css:- Styling for specific component.
+07 index.css:- Styling for entire app.
+08 ClassComponent:- It always extend the Component Interface which contains one method that is render().
+   * And We have to provide the implementation of render() method to render our functionalities.
+			
+			

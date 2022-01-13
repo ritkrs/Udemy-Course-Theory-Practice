@@ -1,0 +1,117 @@
+** Refactoring the Counter Button:-
+__________________________________________
+
+CODE:- App.js:-
+______________________
+ import logo from './logo.svg';
+import './App.css';
+import { Component } from 'react';
+import FirstComponent from './components/learning-examples/FirstComponent';
+import FifthComponent from './components/learning-examples/FifthComponent';
+import SixthComponent from './components/learning-examples/SixthComponent';
+import Counter from './components/counters/Counter';
+//import PrintComponent from './components/learning-examples/PrintComponent';
+
+
+function App() {
+  return (
+    <div className="App">
+      <LearningComponents></LearningComponents>
+      
+     <Counter></Counter>
+      
+      
+      
+      
+    </div>
+  );
+}
+
+function SecondComponent(){
+  return(
+    <div>Second component of function</div>
+  );
+}
+class ThirdComponent extends Component{
+  render(){
+    return(
+      <div>This is Third components:Ritesh</div>
+    );
+  }
+}
+class LearningComponents extends Component{
+  render(){
+    return(
+<div className="LearningComponents">
+     
+    </div>
+    );
+  }
+}
+
+export default App;
+
+
+02 CODE:- Counter:-
+__________________________
+
+import React  from "react";
+import { Component } from "react";
+import './counter.css'
+class Counter extends Component{
+    render(){
+        return(
+            <div className="Counter">
+      
+      
+      <CounterButton by={1}></CounterButton>
+      <CounterButton by={5}></CounterButton>
+      <CounterButton by={10}></CounterButton>
+      
+      
+      
+      
+    </div>
+        );
+    }
+}
+
+
+class  CounterButton extends Component{
+    constructor(){
+        super();
+        this.state={
+            Counter:0,
+            secondCounter:100
+        }
+       // this.increment=this.increment.bind(this);
+    }
+    
+    
+    render=()=>{
+
+        return(
+            <div className="counter">
+
+             <button onClick={this.increment}>+{this.props.by}</button>
+             
+    
+             <span className="count">{this.state.Counter}</span>
+             
+            </div>
+        );
+    }
+     increment=()=>{
+         this.setState({
+             Counter:this.state.Counter+this.props.by,
+
+         });
+        
+           
+    }
+    
+}
+
+
+
+export default Counter

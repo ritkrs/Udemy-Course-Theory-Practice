@@ -1,0 +1,33 @@
+** Functions inj different Module:-
+____________________________________________________
+
+01 PreWorks for going ahead.
+02 Function Component in Different Module.
+____________________________________________________
+
+01 PreWorks for going ahead:-(Arrange Folder Structure):-
+______________________________________________________________
+01 If already not created, create a components folder inside the src folder.
+02 Then create a folder with any name(E.g:- counter) inside the components folder.
+03 Then create a file with any name(counter.jsx) inside counter folder.
+
+
+02 Function Component in Different Module:-
+_______________________________________________________
+01 Create a function with any name.(E.g:-Counter)
+   E.g:- function Counter()
+02 Import React from react.
+   E.g:- import React  from "react";
+03 In the Buttom of the class do the export default.
+   E.g:-export default Counter
+
+** Now comes into the App.js and do some changes here also:-
+
+01 Give the entry for Counter.jsx inside the App.js.
+   E.g:-<Counter></Counter>
+02 Import the counter from  folder structure.
+   E.g:- import Counter  from './components/counter/counter';
+
+   Now,Hit the browser....I hope We are able to see the output.
+   
+                                       Thanks !   Happy Learning.

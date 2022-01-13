@@ -1,0 +1,15 @@
+** Convert function component to class Class component.
+
+** Convert function component to  Class component:-
+________________________________________________________________
+** Make class with the name of counter that extends Component interface.
+** Define render() function inside class.
+** And Copy 
+
+** Keep counter function inside the class itself.
+** Keep just before close the class and remove function keyboard.
+** Hit the browser:- We will get error no undef.
+** Resolve no undef error:- Inside button tag call increment with this keyboard.
+   E.g:- <button onClick={this.increment}>+1</button>
+   
+   

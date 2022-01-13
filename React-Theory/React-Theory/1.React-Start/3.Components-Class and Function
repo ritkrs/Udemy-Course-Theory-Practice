@@ -1,0 +1,48 @@
+** Class and Function and Components:-
+_________________________________________
+01 Class Components.
+02 Create components in Individual Module.
+
+
+** Class Components:-
+_________________________________________
+01. If we want to define any class component inside App.js or anywhere, then that class should extends Component Interface.
+02. And Component interface contains one methods that is render(). render method is returnable.Compulsory we should provide the Impl 
+    for render(). 
+03. Once we create the class then we need to give an entry of that particular class inside pp components.
+    E.g:- function App() {
+          return (
+    <div className="App">
+      My Hello World
+      <FirstComponent></FirstComponent>          -> This is the entry.
+ 
+    </div>
+  );
+}	
+04. App components can be class components or might be function components.
+    CODE EXAMPLE:- 
+	//1st PART.
+	function App() {
+          return (
+    <div className="App">
+      My Hello World
+      <FirstComponent></FirstComponent>          -> This is the entry.
+ 
+    </div>
+  );
+}	
+    //2nd PART.
+	class ThirdComponent extends Component{
+                   render(){
+                   return(
+      <div>This is Third components:Ritesh</div>
+    );
+  }
+}
+  
+  NOTE:- 1st Part is the function App component where we have to give the entry of each and every created components.
+         App component will be work here just like a main method of java.
+  NOTE:- 2nd Part that is fully created by developer.After creating this, compulsory we should give the entry for this inside function App or class App component.
+  
+** Create components in Individual Module:-
+______________________________________________

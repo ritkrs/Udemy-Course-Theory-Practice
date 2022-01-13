@@ -1,0 +1,28 @@
+** Create counter component:-
+______________________________
+** Create one folder inside components folder with the name of counter.
+** Then create a file inside counter folder with the name of counter.jsx.
+** Now we will create a function inside counter.jsx.
+** Function will be like this:-
+   Code:- import React  from "react";
+
+          function Counter(){
+          return(
+        <div className="counter">
+            Counter
+        </div>
+      );
+   }
+        export default Counter
+		
+01 Now we will import this counter inside App.js component.
+   E.g:- import Counter  from './components/counters/Counter';
+
+02 Now we will give the entry of counter inside App.js component.
+   E.g:- <Counter></Counter>
+   
+03 Now hit the browser.   
+04 Hopefully we are able to see the O/p.
+
+   
+		
