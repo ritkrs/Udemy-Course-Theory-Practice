@@ -1,0 +1,37 @@
+** RoadMap**
+____________________
+**   Install the following Software:-
+ 1.  Visual Studion Code.
+ 2.  node
+ 3.  npm
+ 4.  tsc
+ 
+** Workspace creation and Uses:-
+________________________________________ 
+1. After installing all this software we are ready to go.
+2. Create one folder in Our local machine for workspace.
+3. Open the Visual Studio Code and OpenFolder-->And select the workspace location.
+4. Create one folder on clicking on + sign and give any name.(HelloWorld).
+5. Now create the HelloWorld file with .ts extension(Helloworld.ts).
+
+** Run first typescript code :-
+________________________________________
+1. Open the Terminal.
+2. ls
+3. cd HelloWorld - Go to the that particular location.
+4. ls
+5. tsc MyHelloWorld.ts - We have to inplace the name of the class on the palce of MyHelloWorld.
+   NOTE:- After Running the above command we one js file will be generated.
+   
+   [After running the MyHelloWorld.ts if we will get this type of error - tsc : The term 'tsc' is not recognized as the name of
+   a cmdlet, function, script file, or operable program. Check the spelling    
+   of the name, or if a path was included, verify that the path is correct and try again.
+   
+   SOLN:- You can run this in PowerShell command. Be sure to run it as administrator:]
+          Set-ExecutionPolicy -ExecutionPolicy RemoteSigned - Then Run this command.
+		  Y - Then select Yes.
+6. ls
+7. node.MyHelloWorld.js
+
+ 
+ 
